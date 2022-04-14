@@ -1,0 +1,52 @@
+{%extends "base.html"%}
+
+{%block content%}
+<h1>this is blog dashb</h1>
+<style>
+    #post{
+
+        margin: auto;
+        width: 45%;
+        margin-top: 32px;
+        margin-bottom: 32px;
+        height: 30rem;
+        
+    }
+</style>
+
+<form action="#" method="POST" style="width: 45%; margin: auto;">
+    {%csrf_token%}
+
+    
+
+    <div class="mb-3" >
+        <label for="postTitle" class="form-label">Title</label>
+        <input type="text" name="postTitle" class="form-control" id="postTitle"  placeholder="Enter post title">
+    </div>
+
+    <div class="mb-3">
+        <label for="textArea" class="form-label">Post Content</label>
+        <textarea name="postContent" class="form-control" id="postContent" rows="3"></textarea>
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Post!</button>
+    </div>
+
+
+</form>
+{%for post in posts%}
+
+    <div id="post"; class="card">
+        <div id = "body"; class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{post.author}}</h6>
+            <br>
+            <div style="overflow:hidden; text-overflow : ellipsis; height: 15rem;">
+                <p class="card-text">{{post.content}}</p>
+            </div>
+            <a href="#" class="card-link">view more</a>
+        </div>
+    </div>
+{%endfor%}
+{%endblock%}
