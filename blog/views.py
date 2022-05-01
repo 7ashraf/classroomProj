@@ -64,7 +64,8 @@ def test(request):
     })
 
 def myPosts(request):
-    posts = Post.objects.all()
+    posts = None
+    
     return render(request, 'my-posts.html', {
         'posts' : posts
     })
